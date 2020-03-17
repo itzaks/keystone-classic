@@ -229,7 +229,10 @@ relationship.prototype.updateItem = function (item, data, callback) {
 	// Are we handling a many relationship or just one value?
 	if (this.many) {
 		var arr = item.get(this.path);
-		var _old = arr.map(function (i) { return String(i); });
+		var old = [];
+		if(arr) {
+			_old = arr.map(function (i) { return String(i); });
+		}
 		var _new = value;
 		if (!utils.isArray(_new)) {
 			_new = String(_new || '').split(',');
